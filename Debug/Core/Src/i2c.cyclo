@@ -1,0 +1,7 @@
+../Drivers/CMSIS/Include/core_cm0.h:623:22:__NVIC_EnableIRQ	2
+../Core/Src/i2c.c:15:6:I2C1_Init	1
+../Core/Src/i2c.c:29:14:I2C1_WriteAsync	2
+../Core/Src/i2c.c:43:14:I2C1_ReadAsync	2
+../Core/Src/i2c.c:56:14:I2C1_GetStatus	1
+../Core/Src/i2c.c:60:6:I2C1_CopyBuffer	2
+../Core/Src/i2c.c:66:6:I2C1_IRQHandler	7

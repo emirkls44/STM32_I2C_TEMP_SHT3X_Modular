@@ -1,0 +1,4 @@
+../Core/Src/sht3x.c:14:6:SHT3x_Update	24	static
+../Core/Src/sht3x.c:56:7:SHT3x_GetTemperature	8	static
+../Core/Src/sht3x.c:61:7:SHT3x_GetHumidity	8	static
+../Core/Src/sht3x.c:65:5:SHT3x_IsDataNew	8	static
