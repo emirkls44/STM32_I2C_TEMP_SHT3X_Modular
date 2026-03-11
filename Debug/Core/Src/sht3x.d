@@ -24,7 +24,8 @@ Core/Src/sht3x.o: ../Core/Src/sht3x.c ../Core/Inc/sht3x.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
+ ../Core/Inc/i2c.h
 ../Core/Inc/sht3x.h:
 ../Core/Inc/i2c.h:
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h:
@@ -52,3 +53,4 @@ Core/Src/sht3x.o: ../Core/Src/sht3x.c ../Core/Inc/sht3x.h \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h:
+../Core/Inc/i2c.h:

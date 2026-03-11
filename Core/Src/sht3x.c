@@ -6,13 +6,15 @@
  */
 
 #include "sht3x.h"
+#include "i2c.h"
 
 static SHT_Process_t sht_state = SHT_READY_TO_START;
 static float _temp = 0, _hum = 0;
 static int _is_new_data = 0;
+static volatile uint32_t start_time = 0;
 
 void SHT3x_Update(void) {
-    static uint32_t wait_timer = 0;
+
     uint8_t cmd[] = {0x24, 0x00};
     uint8_t raw_data[6];
 
@@ -25,13 +27,13 @@ void SHT3x_Update(void) {
 
         case SHT_SENDING_CMD:
             if(I2C1_GetStatus() == I2C_COMPLETE) {
-                wait_timer = 0;
+            	start_time = HAL_GetTick();
                 sht_state = SHT_MEASURING;
             }
             break;
 
         case SHT_MEASURING:
-            if(wait_timer++ > 300000) {
+            if((HAL_GetTick() - start_time) >= 50) {
                 I2C1_ReadAsync(0x44, 6);
                 sht_state = SHT_READING;
             }

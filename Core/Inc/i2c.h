@@ -19,9 +19,9 @@ typedef enum {
 
 void I2C1_Init(void);
 
-I2C_Status_t I2C1_Write(uint8_t devAddr, uint8_t* pData, uint8_t len);
-I2C_Status_t I2C1_Read(uint8_t devAddr, uint8_t len);
+I2C_Status_t I2C1_WriteAsync(uint8_t devAddr, uint8_t* pData, uint8_t len);
+I2C_Status_t I2C1_ReadAsync(uint8_t devAddr, uint8_t len);
 I2C_Status_t I2C1_GetStatus(void);
-void I2C1_GetBuffer(uint8_t* dest, uint8_t len);
+void I2C1_CopyBuffer(uint8_t* dest, uint8_t len);
 
 #endif /* INC_I2C_H_ */

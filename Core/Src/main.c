@@ -1,9 +1,12 @@
 #include "i2c.h"
 #include "sht3x.h"
 
-int main(void) {
+float current_t = 0.0f;
+float current_h = 0.0f;
 
-    I2C1_Init();
+int main(void) {
+		HAL_Init();
+	    I2C1_Init();
 
     while(1) {
 
@@ -11,7 +14,9 @@ int main(void) {
 
         if(SHT3x_IsDataNew()){
             float current_t = SHT3x_GetTemperature();
-            (void)current_t; //şimdilik kullanmıyorum
+            float current_h = SHT3x_GetHumidity();
+           (void)current_t; //şimdilik kullanmıyorum
+           (void)current_h;
         }
 
 

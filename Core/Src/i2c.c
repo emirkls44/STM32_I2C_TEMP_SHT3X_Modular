@@ -20,7 +20,7 @@ void I2C1_Init(void) {
     GPIOB->OTYPER |= (GPIO_OTYPER_OT_6 | GPIO_OTYPER_OT_7);      // Open Drain
     GPIOB->AFR[0] |= (1 << (6 * 4)) | (1 << (7 * 4));           // AF1
 
-    I2C1->TIMINGR = 0x2000090E;
+    I2C1->TIMINGR = 0x10420F13;
     I2C1->CR1 |= I2C_CR1_TXIE | I2C_CR1_RXIE | I2C_CR1_TCIE | I2C_CR1_NACKIE | I2C_CR1_PE;
 
     NVIC_EnableIRQ(I2C1_IRQn);
@@ -32,8 +32,8 @@ I2C_Status_t I2C1_WriteAsync(uint8_t devAddr, uint8_t* pData, uint8_t len) {
     	return I2C_BUSY;
     }
 
-    tx_ptr = pData;  	//verim nerede
-    tx_len = len;		// verim kaç byte
+    tx_ptr = pData;
+    tx_len = len;
     i2c_state = I2C_BUSY;
 
     I2C1->CR2 = (devAddr << 1) | (len << I2C_CR2_NBYTES_Pos) | I2C_CR2_START;
