@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit-tests:
+    name: Host unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests (ASan + UBSan)
+        run: make -C tests
+
+  firmware:
+    name: Firmware build (arm-none-eabi-gcc)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi libnewlib-arm-none-eabi
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi.cmake -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: |
+            build/*.elf
+            build/*.hex
+            build/*.bin
